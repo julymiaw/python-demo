@@ -10,8 +10,8 @@
 		<img class="logo" src="https://th.bing.com/th/id/OIG.3w2auwiZ7abMx4qVqOrA?w=1024&h=1024&rs=1&pid=ImgDetMain">
         <a href="homepage.html" class="home">论文聚合平台</a>
         <div class="search">
-            <input type="text" placeholder="搜索">
-			<button>
+            <input id="searchInput" type="text" placeholder="搜索">
+			<button onclick="search()">
 				<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
 					<g fill-rule="evenodd" clip-rule="evenodd">
 						<path d="M11.5 18.389c3.875 0 7-3.118 7-6.945 0-3.826-3.125-6.944-7-6.944s-7 3.118-7 6.944 3.125 6.945 7 6.945Zm0 1.5c4.694 0 8.5-3.78 8.5-8.445C20 6.781 16.194 3 11.5 3S3 6.78 3 11.444c0 4.664 3.806 8.445 8.5 8.445Z"></path>
@@ -22,7 +22,7 @@
         </div>
     </header>
     <h1>The Eleventh International Conference on Learning Representations</h1>
-	<div style="box-shadow: 0 1px 3px hsla(0,0%,7%,.1)">
+	<div style="box-shadow: 0 1px 3px hsla(0,0%,7%,.1);display: flex;flex-direction: column;align-items: center">
 		<div class="tabCardContainer">
 			<button id="tab_0" class="tabCard" onclick="clickTab(0)" style="color: #121212">Notable-top-5%</button>
 			<button id="tab_1" class="tabCard" onclick="clickTab(1)" style="color: #121212">Notable-top-25%</button>

@@ -37,5 +37,23 @@ def generate_keywords_wordcloud():
 
     return send_file(img_buffer, mimetype='image/png')
 
+@app.route('/api/search', methods=['GET'])
+@cross_origin()
+def search_data():
+    keyword = request.args.get('keyword')
+    # 在全局变量 data 中搜索关键词并返回结果
+    result = search_in_data(keyword)
+    return jsonify(result)
+
+def search_in_data(keyword):
+    global data
+
+    # 在 data 中搜索关键词，找到匹配的索引
+    result = []
+    for i, sublist in enumerate(data['keywords']):
+        if keyword in sublist:
+            result.append(i)
+    return result
+
 if __name__ == '__main__':
     app.run(port=5000)
