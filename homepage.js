@@ -109,12 +109,11 @@ function showSearchResult(indexs) {
 
     // 填充文章块的内容
     article.innerHTML = `
-                <h2>${data.titles[indexs[i]]}</h2>
-                <p>Author: ${data.authors[indexs[i]]}</p>
-                <p>Keywords: ${data.keywords[indexs[i]]}</p>
-                <a href="${
-                  data.pdfs[indexs[i]]
-                }" target="_blank" class="download">Download PDF</a>
+                <h2>${data.titles[i]}</h2>
+                <p>Author: ${data.authors[i]}</p>
+                <p>Keywords: ${data.keywords[i]}</p>
+                <p>Abstracts: ${data.abstracts[i]}</p>
+                <a href="${data.pdfs[i]}" target="_blank" class="download-button">Download PDF</a>
             `;
 
     // 将文章块添加到 article-container 中
