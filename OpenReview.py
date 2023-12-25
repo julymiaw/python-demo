@@ -3,7 +3,7 @@ import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlencode, urlunparse, urlparse, parse_qsl
 
-pd_dic = {"titles": [], "authors": [], "keywords": [], "pdfs": []}
+pd_dic = {"titles": [], "authors": [], "keywords": [], "pdfs": [], "abstract": []}
 limit = 25
 # 所有ICLR前%5的论文
 url_0 = "https://api.openreview.net/notes?content.venue=ICLR+2023+notable+top+5%25&details=replyCount&offset=25&limit=25&invitation=ICLR.cc%2F2023%2FConference%2F-%2FBlind_Submission"
@@ -26,6 +26,7 @@ url_4 = "https://api.openreview.net/notes?details=replyCount%2Cinvitation%2Corig
 temp_resp_4 = requests.get(url_4)
 count_4 = temp_resp_4.json()["count"]
 
+
 def get_one_page(_url, _dict):
     try:
         resp = requests.get(_url)
@@ -43,9 +44,11 @@ def get_one_page(_url, _dict):
         _dict["authors"].append(content["authors"])
         _dict["keywords"].append(content["keywords"])
         _dict["pdfs"].append(pdf)
+        _dict["abstracts"].append(content["abstract"])
         print("ok")
 
-def Thread_Method(__url, _count, _dict = pd_dic):
+
+def Thread_Method(__url, _count, _dict=pd_dic):
     with ThreadPoolExecutor(50) as t:
         for i in range(0, _count, limit):
             # 解析URL
@@ -60,12 +63,14 @@ def Thread_Method(__url, _count, _dict = pd_dic):
             _url = urlunparse(url_parts)
             t.submit(get_one_page, _url, _dict)
 
+
 def func(mode):
-    dic = {"titles": [], "authors": [], "keywords": [], "pdfs": []}
-    url = globals()['url_' + str(mode)]
-    count = globals()['count_' + str(mode)]
+    dic = {"titles": [], "authors": [], "keywords": [], "pdfs": [], "abstracts": []}
+    url = globals()["url_" + str(mode)]
+    count = globals()["count_" + str(mode)]
     Thread_Method(url, count, dic)
     return dic
+
 
 if __name__ == "__main__":
     pd_dic = func(4)
