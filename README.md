@@ -2,6 +2,11 @@
 
 `Python第四小组`
 
+## 项目启动方法
+
+1. 运行api.py，启动后端服务
+2. 打开homepage.html，若出现跨源协议问题，请用live-server打开
+
 ## 作业要求
 
 ```markdown
