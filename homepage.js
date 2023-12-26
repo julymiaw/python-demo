@@ -47,7 +47,7 @@ function displayPage() {
                 <p>Author: ${data.authors[i]}</p>
                 <p>Keywords: ${data.keywords[i]}</p>
                 <p>Abstracts: ${data.abstracts[i]}</p>
-                <a href="${data.pdfs[i]}" target="_blank" class="download-button">Download PDF</a>
+                <a href="${data.pdfs[i]}"><button class="download-button">下载</button></a>
             `;
 
       // 将文章块添加到 article-container 中
@@ -74,6 +74,7 @@ function getKeywordsWordcloud() {
       // 在页面上显示词云图片
       let imgElement = document.createElement("img");
       imgElement.src = imageUrl;
+      imgElement.className = "img";
       container.appendChild(imgElement);
     })
     .catch((error) => console.error("Error fetching wordcloud:", error));
@@ -113,7 +114,7 @@ function showSearchResult(indexs) {
                 <p>Author: ${data.authors[i]}</p>
                 <p>Keywords: ${data.keywords[i]}</p>
                 <p>Abstracts: ${data.abstracts[i]}</p>
-                <a href="${data.pdfs[i]}" target="_blank" class="download-button">Download PDF</a>
+                <a href="${data.pdfs[i]}"><button class="download-button">下载</button></a>
             `;
 
     // 将文章块添加到 article-container 中

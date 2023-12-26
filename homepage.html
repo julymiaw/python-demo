@@ -6,6 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="homepage.css">
 </head>
 <body onload="initPage()">
+	<div class="mask"></div>
+	<div class="img-container"></div>
 	<header class="header">
 		<img class="logo" src="https://th.bing.com/th/id/OIG.3w2auwiZ7abMx4qVqOrA?w=1024&h=1024&rs=1&pid=ImgDetMain">
         <a href="homepage.html" class="home">论文聚合平台</a>
@@ -31,9 +33,36 @@
 			<button id="tab_4" class="tabCard" onclick="clickTab(4)" style="color: #121212">Desk Rejected/Withdrawn Submissions</button>
 		</div>
 		<div id="loading"><p>加载中...</p></div>
-		<div class="img-container"></div>
 		<div class="article-container"></div>
 	</div>
 	<script src="homepage.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		// 获取按钮元素
+		var btn = $(".logo");
+		// 获取遮罩层元素
+		var mask = $(".mask");
+		// 获取图片元素
+		var img = $(".img-container");
+		// 获取文章元素
+		var art = $(".article-container");
+		// 给按钮元素绑定点击事件
+		btn.click(function () {
+			// 切换遮罩层和图片的显示状态
+			mask.toggle();
+			img.toggle();
+			art.toggle();
+		});
+		// 给遮罩层元素绑定点击事件
+		mask.click(function (e) {
+			// 判断点击的是否是图片以外的位置
+			if (e.target !== img[0]) {
+				// 切换遮罩层和图片的显示状态
+				mask.hide();
+				img.hide();
+				art.toggle();
+			}
+		});
+	</script>
 </body>
 </html>
